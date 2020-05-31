@@ -57,7 +57,7 @@ def verifier():
         return 0
 
 #Adauga pacient
-def add_student():
+def add_pacient():
             ret=verifier()
             if ret==0:
                 conn=connection()
@@ -69,7 +69,7 @@ def add_student():
                 t1.insert(END,"ADAUGARE CU SUCCES!!!\n")
 
 #Afiseaza pacienti
-def view_student():
+def view_pacient():
     conn=connection()
     cur=conn.cursor()
     cur.execute("select * from PACIENT")
@@ -79,7 +79,7 @@ def view_student():
         t1.insert(END,str(i)+"\n")
 
 #Sterge pacient
-def delete_student():
+def delete_pacient():
     ret=verifier()
     if ret==0:
         conn=connection()
@@ -89,7 +89,7 @@ def delete_student():
         conn.close()
         t1.insert(END,"PACIENT STERS CU SUCCES!!!\n")
 #Actualizaeaza  pacient
-def update_student():
+def update_pacient():
     ret=verifier()
     if ret==0:
         conn=connection()
@@ -98,6 +98,23 @@ def update_student():
         conn.commit()
         conn.close()
         t1.insert(END,"Actualizare cu succes!!!\n")
+#Functia de cautare 
+# def search_pacient(self, master):
+#     self.master = master
+      
+
+#         # search criteria -->name 
+#     self.name = Label(master, text="Enter Patient's Name", font=('arial 18 bold'))
+#     self.name.place(x=0, y=60)
+
+#         # entry for  the name
+#     self.namenet = Entry(master, width=30)
+#     self.namenet.place(x=280, y=62)
+
+#         # buton cautare 
+#     self.search = Button(master, text="Cauta", width=12, height=1, bg='steelblue', command=self.search_db,color="red")
+#     self.search.place(x=350, y=102)
+
 
 
 def clse():
@@ -138,7 +155,7 @@ if __name__=="__main__":
     label6=Label(root,text="Adresa:",bg="red")
     label6.place(x=0,y=150)
 
-    label7=Label(root,text="Grupa:",bg="red")
+    label7=Label(root,text="Grupa de sange:",bg="red")
     label7.place(x=0,y=180)
 
     label8=Label(root,text="Stare de sanatate:",bg="red")
@@ -153,7 +170,7 @@ if __name__=="__main__":
     label11=Label(root,text="Ora programari:",bg="red")
     label11.place(x=0,y=300)
 
-#casuta
+#casutele
     e1=Entry(root,textvariable=pacient_nume , bg="LightGreen")
     e1.place(x=150,y=0)
 
@@ -187,27 +204,29 @@ if __name__=="__main__":
     e11=Entry(root,textvariable=ORA,bg="LightGreen")
     e11.place(x=150,y=300)
     
-    #t1=Text(root,width=90,height=30,bg="LightBlue")
-   # t1.grid(row=10,column=1)
-    
     t1=Text(root,width=90,height=30,bg="LightBlue")
     t1.grid(row=10,column=1)
-   
+    
+    
 
 #butoane
-    b1=Button(root,text="ADAUGA PACIENT",command=add_student,width=40,bg="blue")
-    b1.grid(row=11,column=0)
+    b1=Button(root,text="ADAUGA PACIENT",command=add_pacient,width=87,bg="blue")
+    b1.grid(row=12,column=1)
 
-    b2=Button(root,text="VEZI TOTI PACIENTI",command=view_student,width=40,bg="green")
-    b2.grid(row=12,column=0)
+    b2=Button(root,text="VEZI TOTI PACIENTI",command=view_pacient,width=87,bg="green")
+    b2.grid(row=13,column=1)
 
-    b3=Button(root,text="STERGE PACIENT",command=delete_student,width=40,bg="red")
-    b3.grid(row=13,column=0)
+    b3=Button(root,text="STERGE PACIENT",command=delete_pacient,width=87,bg="red")
+    b3.grid(row=14,column=1)
 
-    b4=Button(root,text="ACTUALIZEAZA PACIENT",command=update_student,width=40,bg="orange")
-    b4.grid(row=14,column=0)
+    b4=Button(root,text="ACTUALIZEAZA PACIENT",command=update_pacient,width=87,bg="orange")
+    b4.grid(row=15,column=1)
+    
+    b6=Button(root,text="Cauta",command=clse,width=40,bg="red")
+    b6.grid(row=13,column=0)
 
-    b5=Button(root,text="INCHIDE",command=clse,width=40,bg="red")
+
+    b5=Button(root,text="INCHIDE PROGRAMUL",command=clse,width=40,bg="red")
     b5.grid(row=15,column=0)
 
 
