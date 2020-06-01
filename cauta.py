@@ -84,55 +84,55 @@ class Application:
         self.uid.place(x=0, y=520)
 
         # Casutele unde intra datele cautate
-        self.ent1 = Entry(self.master, width=70)
-        self.ent1.place(x=300, y=140)
+        self.ent1 = Entry(self.master, width=110, bg="LightGreen")
+        self.ent1.place(x=180, y=140)
         self.ent1.insert(END, str(self.nume))
 
-        self.ent2 = Entry(self.master, width=70)
-        self.ent2.place(x=300, y=180)
+        self.ent2 = Entry(self.master, width=110, bg="LightGreen")
+        self.ent2.place(x=180, y=180)
         self.ent2.insert(END, str(self.varsta))
 
-        self.ent3 = Entry(self.master, width=70)
-        self.ent3.place(x=300, y=220)
+        self.ent3 = Entry(self.master, width=110, bg="LightGreen")
+        self.ent3.place(x=180, y=220)
         self.ent3.insert(END, str(self.afectiune))
 
-        self.ent4 = Entry(self.master, width=70)
-        self.ent4.place(x=300, y=260)
+        self.ent4 = Entry(self.master, width=110, bg="LightGreen")
+        self.ent4.place(x=180, y=260)
         self.ent4.insert(END, str(self.telefon))
 
-        self.ent5 = Entry(self.master, width=70)
-        self.ent5.place(x=300, y=300)
+        self.ent5 = Entry(self.master, width=110, bg="LightGreen")
+        self.ent5.place(x=180, y=300)
         self.ent5.insert(END, str(self.tata))
 
-        self.ent6 = Entry(self.master, width=70)
-        self.ent6.place(x=300, y=340)
+        self.ent6 = Entry(self.master, width=110, bg="LightGreen")
+        self.ent6.place(x=180, y=340)
         self.ent6.insert(END, str(self.adresa))
 
-        self.ent7 = Entry(self.master, width=70)
-        self.ent7.place(x=300, y=370)
+        self.ent7 = Entry(self.master, width=110, bg="LightGreen")
+        self.ent7.place(x=180, y=370)
         self.ent7.insert(END, str(self.grupa))
 
-        self.ent8 = Entry(self.master, width=70)
-        self.ent8.place(x=300, y=400)
+        self.ent8 = Entry(self.master, width=110, bg="LightGreen")
+        self.ent8.place(x=180, y=400)
         self.ent8.insert(END, str(self.stare))
 
 
-        self.ent9 = Entry(self.master, width=70)
-        self.ent9.place(x=300, y=430)
+        self.ent9 = Entry(self.master, width=110, bg="LightGreen")
+        self.ent9.place(x=180, y=430)
         self.ent9.insert(END, str(self.internari))
 
 
-        self.ent10 = Entry(self.master, width=70)
-        self.ent10.place(x=300, y=460)
+        self.ent10 = Entry(self.master, width=110, bg="LightGreen")
+        self.ent10.place(x=180, y=460)
         self.ent10.insert(END, str(self.data))
 
-        self.ent11 = Entry(self.master, width=70)
-        self.ent11.place(x=300, y=490)
+        self.ent11 = Entry(self.master, width=110, bg="LightGreen")
+        self.ent11.place(x=180, y=490)
         self.ent11.insert(END, str(self.ora))
 
 
-        self.ent12 = Entry(self.master, width=70)
-        self.ent12.place(x=300, y=530)
+        self.ent12 = Entry(self.master, width=110, bg="LightGreen")
+        self.ent12.place(x=180, y=530)
         self.ent12.insert(END, str(self.id))
 
         # buton de actualizare 

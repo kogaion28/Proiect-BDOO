@@ -1,6 +1,9 @@
 from tkinter import *
 import sqlite3,sys
 
+# from tkinter.ttk import *
+# from tkinter.filedialog import askopenfile
+
 
 
 #conexiunea cu baza de date 
@@ -104,10 +107,11 @@ def update_pacient():
 #------////////////////////---------------------------------
 
 
-
-
-
-
+def open_file(): 
+    file = askopenfile(mode ='r', filetypes =[('Python Files', 'cauta.py')]) 
+    if file is not None: 
+        content = file.read() 
+        print(content) 
 
 
 
@@ -231,7 +235,7 @@ if __name__=="__main__":
     b4=Button(root,text="ACTUALIZEAZA PACIENT",command=update_pacient,width=87,bg="orange")
     b4.grid(row=15,column=1)
     
-    b6=Button(root,text="Cauta",command=clse,width=40,bg="red")
+    b6=Button(root,text="Cauta",command = lambda:open_file(),width=40,bg="red")
     b6.grid(row=13,column=0)
 
 
