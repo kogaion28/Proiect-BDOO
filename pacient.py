@@ -14,12 +14,12 @@ def connection():
 
 #verificare 
 def verifier():
-    a=b=c=d=e=f=g=h=i=j=k=0
+    a=b=c=d=e=f=g=h=i=j=k=v=0
     if not pacient_nume.get():
         t1.insert(END,"<>Numele pacientului<>\n")
         a=1
     if not NR.get():
-        t1.insert(END,"<>NR fisei pacientului<>\n")
+        t1.insert(END,"<>Varsta<>\n")
         b=1
     if not AFECTIUNE.get():
         t1.insert(END,"<>Afectiuni<>\n")
@@ -43,15 +43,18 @@ def verifier():
         t1.insert(END,"<>Internari<>\n")
         i=1
     if not DATA.get():
-        t1.insert(END,"<>Internari<>\n")
+        t1.insert(END,"<>Data<>\n")
         j=1
     if not ORA.get():
-        t1.insert(END,"<>Internari<>\n")
+        t1.insert(END,"<>Ora<>\n")
         k=1
+    if not ID.get():
+        t1.insert(END,"<>Nr fisier<>\n")
+        v=1
     
 
     
-    if a==1 or b==1 or c==1 or d==1 or e==1 or f==1 or g==1 or h==1 or i==1 or j==1 or k==1:
+    if a==1 or b==1 or c==1 or d==1 or e==1 or f==1 or g==1 or h==1 or i==1 or j==1 or k==1 or v==1:
         return 1
     else:
         return 0
@@ -62,8 +65,8 @@ def add_pacient():
             if ret==0:
                 conn=connection()
                 cur=conn.cursor()
-                cur.execute("CREATE TABLE IF NOT EXISTS PACIENT(NUME TEXT,NR INTEGER,AFECTIUNE TEXT,TELEFON INTEGER,TATA TEXT,ADRESA TEXT,GRUPA TEXT,STARE TEXT,INTERNARI TEXT,DATA INTEGER,ORA INTEGER)")#creaza baza de data daca nu exista
-                cur.execute("insert into PACIENT values(?,?,?,?,?,?,?,?,?,?,?)",(pacient_nume.get(),int(NR.get()),AFECTIUNE.get(),int(TELEFON.get()),TATA.get(),ADRESA.get(),GRUPA.get(),STARE.get(),INTERNARI.get(),DATA.get(),ORA.get()))
+                cur.execute("CREATE TABLE IF NOT EXISTS PACIENT(NUME TEXT,NR INTEGER,AFECTIUNE TEXT,TELEFON INTEGER,TATA TEXT,ADRESA TEXT,GRUPA TEXT,STARE TEXT,INTERNARI TEXT,DATA INTEGER,ORA INTEGER,ID INTEGER)")#creaza baza de data daca nu exista
+                cur.execute("insert into PACIENT values(?,?,?,?,?,?,?,?,?,?,?,?)",(pacient_nume.get(),int(NR.get()),AFECTIUNE.get(),int(TELEFON.get()),TATA.get(),ADRESA.get(),GRUPA.get(),STARE.get(),INTERNARI.get(),DATA.get(),ORA.get(),ID.get()))
                 conn.commit()
                 conn.close()
                 t1.insert(END,"ADAUGARE CU SUCCES!!!\n")
@@ -94,27 +97,24 @@ def update_pacient():
     if ret==0:
         conn=connection()
         cur=conn.cursor()
-        cur.execute("UPDATE PACIENT SET NUME=?,NR=?,AFECTIUNE=?,TELEFON=?,TATA=?,ADRESA=?,GRUPA=?,STARE=?,INTERNARI=?,DATA=?,ORA=? where NR=?",(pacient_nume.get(),int(NR.get()),AFECTIUNE.get(),int(TELEFON.get()),TATA.get(),ADRESA.get(),GRUPA.get(),STARE.get(),INTERNARI.get(),DATA.get(),ORA.get(),int(NR.get())))     #actualizeaza pacient dupa
+        cur.execute("UPDATE PACIENT SET NUME=?,NR=?,AFECTIUNE=?,TELEFON=?,TATA=?,ADRESA=?,GRUPA=?,STARE=?,INTERNARI=?,DATA=?,ORA=?,ID=? where NR=?",(pacient_nume.get(),int(NR.get()),AFECTIUNE.get(),int(TELEFON.get()),TATA.get(),ADRESA.get(),GRUPA.get(),STARE.get(),INTERNARI.get(),DATA.get(),ORA.get(),ID.get(),int(NR.get())))     #actualizeaza pacient dupa
         conn.commit()
         conn.close()
         t1.insert(END,"Actualizare cu succes!!!\n")
-#Functia de cautare 
-# def search_pacient(self, master):
-#     self.master = master
-      
+#------////////////////////---------------------------------
 
-#         # search criteria -->name 
-#     self.name = Label(master, text="Enter Patient's Name", font=('arial 18 bold'))
-#     self.name.place(x=0, y=60)
 
-#         # entry for  the name
-#     self.namenet = Entry(master, width=30)
-#     self.namenet.place(x=280, y=62)
 
-#         # buton cautare 
-#     self.search = Button(master, text="Cauta", width=12, height=1, bg='steelblue', command=self.search_db,color="red")
-#     self.search.place(x=350, y=102)
 
+
+
+
+
+
+
+
+
+#-----/////////////////////////////-----------------------------
 
 
 def clse():
@@ -136,11 +136,12 @@ if __name__=="__main__":
     INTERNARI=StringVar()
     DATA=StringVar()
     ORA=StringVar()
+    ID=StringVar()
 #lebel
     label1=Label(root,text="Numele Pacientului:",bg="red")
     label1.place(x=0,y=0)
 
-    label2=Label(root,text="NR fisierului:",bg="red")
+    label2=Label(root,text="Varsta Pacientului:",bg="red")
     label2.place(x=0,y=30)
 
     label3=Label(root,text="Afectiuni",bg="red")
@@ -169,6 +170,11 @@ if __name__=="__main__":
 
     label11=Label(root,text="Ora programari:",bg="red")
     label11.place(x=0,y=300)
+    
+    label12=Label(root,text="Nr fisa:",bg="red")
+    label12.place(x=0,y=330)
+
+
 
 #casutele
     e1=Entry(root,textvariable=pacient_nume , bg="LightGreen")
@@ -203,6 +209,9 @@ if __name__=="__main__":
 
     e11=Entry(root,textvariable=ORA,bg="LightGreen")
     e11.place(x=150,y=300)
+
+    e12=Entry(root,textvariable=ID,bg="LightGreen")
+    e12.place(x=150,y=330)
     
     t1=Text(root,width=90,height=30,bg="LightBlue")
     t1.grid(row=10,column=1)
@@ -228,6 +237,10 @@ if __name__=="__main__":
 
     b5=Button(root,text="INCHIDE PROGRAMUL",command=clse,width=40,bg="red")
     b5.grid(row=15,column=0)
+
+
+
+
 
 
     root.mainloop()
